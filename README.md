@@ -191,6 +191,13 @@ CREATE TABLE research_ave_boost AS \
      WITH (KAFKA_TOPIC='research_ave_boost', VALUE_FORMAT='delimited', KEY='research') \
      GROUP BY research;
 ```
+Change comment for fix error(IF sql above get error)
+```
+CREATE TABLE research_ave_boost AS \
+     SELECT research, SUM(admit_chance)/COUNT(admit_chance) as ave_chance \
+     FROM research_boost \
+     GROUP BY research;
+```
 
 ## Add a connector to sink a KSQL table back to Postgres
 
